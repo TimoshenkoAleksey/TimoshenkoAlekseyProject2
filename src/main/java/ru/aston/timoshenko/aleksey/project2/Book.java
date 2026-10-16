@@ -1,8 +1,9 @@
 package ru.aston.timoshenko.aleksey.project2;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
-public class Book implements Comparable<Book>{
+public class Book implements Comparable<Book> {
     private String title;
     private String author;
     private int year;
@@ -13,10 +14,10 @@ public class Book implements Comparable<Book>{
     }
 
     public Book(String title, String author, int year, int pages) {
-        this.title = title;
-        this.author = author;
-        this.year = year;
-        this.pages = pages;
+        this.title = validateTitle(title);
+        this.author = validateAuthor(author);
+        this.year = validateYear(year);
+        this.pages = validatePages(pages);
     }
 
     public String getTitle() {
@@ -24,7 +25,7 @@ public class Book implements Comparable<Book>{
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = validateTitle(title);
     }
 
     public String getAuthor() {
@@ -32,7 +33,7 @@ public class Book implements Comparable<Book>{
     }
 
     public void setAuthor(String author) {
-        this.author = author;
+        this.author = validateAuthor(author);
     }
 
     public int getYear() {
@@ -40,7 +41,7 @@ public class Book implements Comparable<Book>{
     }
 
     public void setYear(int year) {
-        this.year = year;
+        this.year = validateYear(year);
     }
 
     public int getPages() {
@@ -48,7 +49,38 @@ public class Book implements Comparable<Book>{
     }
 
     public void setPages(int pages) {
-        this.pages = pages;
+        this.pages = validatePages(pages);
+    }
+
+    private static String validateTitle(String title) {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException(
+                    "Название книги не может быть пустым или состоять только из пробелов.");
+        }
+        return title.strip();
+    }
+
+    private static String validateAuthor(String author) {
+        if (author == null || author.isBlank()) {
+            throw new IllegalArgumentException(
+                    "Имя автора книги не может быть пустым или состоять только из пробелов.");
+        }
+        return author.strip();
+    }
+
+    private static int validateYear(int year) {
+        if (year < 1440 || year > LocalDate.now().getYear()) {
+            throw new IllegalArgumentException("Книга не могла быть напечатана, раньше начала эпохи книгопечатания " +
+                    "и позже текущего года.");
+        }
+        return year;
+    }
+
+    private static int validatePages(int pages) {
+        if (pages < 1) {
+            throw new IllegalArgumentException("В книге не может быть ноль и менее страниц.");
+        }
+        return pages;
     }
 
     @Override
