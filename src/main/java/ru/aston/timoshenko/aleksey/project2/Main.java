@@ -17,7 +17,7 @@ public class Main {
                 .filter(book -> book.getYear() > 2000)
                 .limit(3)
                 .map(Book::getYear)
-                .findAny()
+                .findFirst()
                 .ifPresentOrElse(System.out::println, () -> System.out.println("No books found"));
 
     }
