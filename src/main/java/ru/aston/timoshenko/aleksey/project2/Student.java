@@ -12,9 +12,9 @@ public class Student {
     }
 
     public Student(String name, int age, List<Book> books) {
-        this.name = name;
-        this.age = age;
-        this.books = books;
+        this.name = validateName(name);
+        this.age = validateAge(age);
+        this.books = validateBooks(books);
     }
 
     public String getName() {
@@ -22,7 +22,7 @@ public class Student {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = validateName(name);
     }
 
     public int getAge() {
@@ -30,7 +30,7 @@ public class Student {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        this.age = validateAge(age);
     }
 
     public List<Book> getBooks() {
@@ -38,7 +38,28 @@ public class Student {
     }
 
     public void setBooks(List<Book> books) {
-        this.books = books;
+        this.books = validateBooks(books);
+    }
+
+    private static String validateName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Имя студента не может быть пустым.");
+        }
+        return name.strip();
+    }
+
+    private static int validateAge(int age) {
+        if (age < 1) {
+            throw new IllegalArgumentException("Возраст студента не может быть равен нулю или быть меньше нуля.");
+        }
+        return age;
+    }
+
+    private static List<Book> validateBooks(List<Book> books) {
+        if (books == null || books.size() < 5) {
+            throw new IllegalArgumentException("У каждого студента должно быть не менее пяти книг.");
+        }
+        return books;
     }
 
     @Override
