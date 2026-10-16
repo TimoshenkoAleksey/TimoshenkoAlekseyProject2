@@ -32,6 +32,12 @@
         "author": "Matthew, Mark, Luke, John",
         "year": 1455,
         "pages": 1272
+      },
+      {
+        "title": "Ten Little Niggers",
+        "author": "Agatha Christie",
+        "year": 1939,
+        "pages": 252
       }
     ]
   },
@@ -68,6 +74,12 @@
         "author": "Ingersoll Lockwood",
         "year": 1896,
         "pages": 28
+      },
+      {
+        "title": "Ten Little Niggers",
+        "author": "Agatha Christie",
+        "year": 1939,
+        "pages": 252
       }
     ]
   },
@@ -102,8 +114,14 @@
       {
         "title": "One Thousand Magical Herbs and Fungi",
         "author": "Phyllida Spore",
-        "year": 1408,
+        "year": 1448,
         "pages": 1000
+      },
+      {
+        "title": "Ten Little Niggers",
+        "author": "Agatha Christie",
+        "year": 1939,
+        "pages": 252
       }
     ]
   }
